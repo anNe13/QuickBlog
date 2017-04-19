@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<fx:root type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" prefHeight="200" prefWidth="200" spacing="10.0">
+         <children>
+            <TextField fx:id="userNameField" alignment="TOP_CENTER" promptText="Username" />
+            <TextField fx:id="passwordField" alignment="CENTER" promptText="Password" />
+         </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="BOTTOM_CENTER">
+         <children>
+            <Button alignment="BOTTOM_CENTER" mnemonicParsing="false" text="Login" onAction="#login"/>
+         </children>
+      </HBox>
+   </children>
+</fx:root>

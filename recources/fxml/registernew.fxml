@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 
 <fx:root stylesheets="@Style/Styler.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
-<GridPane fx:id="root" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" />
     <ColumnConstraints hgrow="SOMETIMES" />
@@ -23,27 +23,35 @@
          <ColumnConstraints />
   </columnConstraints>
   <rowConstraints>
+    <RowConstraints />
     <RowConstraints minHeight="10.0" />
     <RowConstraints minHeight="10.0" />
-    <RowConstraints minHeight="10.0" />
+         <RowConstraints minHeight="10.0" />
+         <RowConstraints />
          <RowConstraints />
   </rowConstraints>
    <children>
-      <VBox alignment="CENTER" fillWidth="false" GridPane.columnSpan="4" GridPane.rowSpan="4">
+      <VBox alignment="CENTER" fillWidth="false" GridPane.columnSpan="4" GridPane.rowIndex="1" GridPane.rowSpan="4">
          <children>
-               <Label text="Username">
+               <Label text="Username:">
                   <font>
                      <Font size="18.0" />
                   </font></Label>
             <TextField fx:id="userNameField" onAction="#onEnter" />
                <Separator prefWidth="200.0" />
-               <Label accessibleRole="PASSWORD_FIELD" text="Password">
+               <Label accessibleRole="PASSWORD_FIELD" text="Password:">
                   <font>
                      <Font size="18.0" />
                   </font></Label>
-            <PasswordField fx:id="passwordField" onAction="#onEnter" />
-               <Separator prefWidth="200.0" />
-               <Button alignment="CENTER" mnemonicParsing="false" onAction="#login">
+            <PasswordField fx:id="passwordField1" onAction="#onEnter" />
+             <Separator prefWidth="200.0" />
+             <Label accessibleRole="PASSWORD_FIELD" text="Confirm password:">
+                 <font>
+                     <Font size="18.0" />
+                 </font></Label>
+             <PasswordField fx:id="passwordField2" onAction="#onEnter" />
+             <Separator prefWidth="200.0" />
+               <Button alignment="CENTER" mnemonicParsing="false" onAction="#register">
                   <font>
                      <Font size="20.0" />
                   </font>
@@ -51,9 +59,9 @@
                      <Insets top="10.0" />
                   </VBox.margin>
                   <graphic>
-                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                     <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" smooth="false">
                         <image>
-                           <Image url="@Style/login.png" />
+                           <Image url="@Style/Plus-50.png" />
                         </image>
                      </ImageView>
                   </graphic></Button>
@@ -63,6 +71,7 @@
                <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
             </GridPane.margin>
       </VBox>
+
    </children>
 </GridPane>
 </fx:root>

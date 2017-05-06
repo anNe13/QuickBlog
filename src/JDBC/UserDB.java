@@ -5,19 +5,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginDB {
+public class UserDB {
     Connector connector = new Connector();
     Connection con;
     ResultSet resultSet = null;
     PreparedStatement statement = null;
 
     public boolean isValid(String userName, String password) {
-con = connector.getConnection();
+        con = connector.getConnection();
+
         boolean foundAccount = false;
 
         try {
             statement = con.prepareStatement
-                    ("SELECT COUNT(*) FROM useraccount WHERE Username = ? AND Userpassword = ?");
+                    ("SELECT COUNT(*) FROM useraccount WHERE username = ? AND password = ?");
             statement.setString(1, userName);
             statement.setString(2, password);
 
@@ -33,30 +34,19 @@ con = connector.getConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            try {
-                if (resultSet != null) resultSet.close();
-            } catch (Exception e) {
-            }
-            try {
-                if (statement != null) statement.close();
-            } catch (Exception e) {
-            }
-            try {
-                if (con != null) con.close();
-            } catch (Exception e) {
-            }
-            return foundAccount;
+            closeAll();
         }
+
+        return foundAccount;
 
 
     }
-
-    public boolean userNameExist (String userName){
+    public boolean userNameExist(String userName) {
         con = connector.getConnection();
         boolean foundAccountUsername = false;
         try {
             statement = con.prepareStatement
-                    ("SELECT COUNT(*) FROM Useraccount WHERE Username = ?");
+                    ("SELECT COUNT(*) FROM useraccount WHERE username = ?");
             statement.setString(1, userName);
 
             resultSet = statement.executeQuery();
@@ -70,22 +60,43 @@ con = connector.getConnection();
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            try {
-                if (resultSet != null) resultSet.close();
-            } catch (Exception e) {
-            }
-            try {
-                if (statement != null) statement.close();
-            } catch (Exception e) {
-            }
-            try {
-                if (con != null) con.close();
-            } catch (Exception e) {
-            }
-            return foundAccountUsername;
+            closeAll();
         }
-
-
+        return foundAccountUsername;
     }
 
+
+    public void tryRegisterUser(String username, String password) {
+        con = connector.getConnection();
+        if (con != null) {
+            try {
+                statement = con.prepareStatement("INSERT INTO useraccount (username, password)VALUES(?, ?)");
+                statement.setString(1, username);
+                statement.setString(2, password);
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            } finally {
+                closeAll();
+            }
+
+        }
+    }
+
+    private void closeAll() {
+        try {
+            if (con != null) {
+                con.close();
+            }
+            if (statement != null) {
+                statement.close();
+            }
+
+            if (resultSet != null) {
+                resultSet.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package JDBC;
 
+import java.net.UnknownHostException;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -10,15 +11,15 @@ public class PostDB {
     Connection con;
     PreparedStatement statement = null;
 
-    public void post(String tittle, String content, String userName, Date date){
+    public void post(String title, String content, String userName, String location) {
         con = connector.getConnection();
 
         try {
-            statement = con.prepareStatement("INSERT INTO blogpost (Tittle, Content, Username, NowDate) VALUES (?,?,?,?)");
-            statement.setString(1, tittle);
+            statement = con.prepareStatement("INSERT INTO post (title, content, username, location) VALUES (?,?,?,?)");
+            statement.setString(1, title);
             statement.setString(2,content);
             statement.setString(3,userName);
-            statement.setDate(4, date);
+            statement.setString(4,location);
 
             statement.executeUpdate();
 

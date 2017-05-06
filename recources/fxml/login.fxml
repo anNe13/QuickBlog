@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root stylesheets="@Style/Styler.css" type="javafx.scene.layout.VBox" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+    <GridPane fx:id="root" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints />
+            <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" />
+            <RowConstraints minHeight="10.0" />
+            <RowConstraints minHeight="10.0" />
+            <RowConstraints />
+            <RowConstraints />
+        </rowConstraints>
+        <children>
+            <VBox alignment="CENTER" fillWidth="false" GridPane.columnSpan="4" GridPane.rowSpan="4">
+                <children>
+                    <Label text="Username">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <TextField fx:id="userNameField" onAction="#onEnter" />
+                    <Separator prefWidth="200.0" />
+                    <Label accessibleRole="PASSWORD_FIELD" text="Password">
+                        <font>
+                            <Font size="18.0" />
+                        </font>
+                    </Label>
+                    <PasswordField fx:id="passwordField" onAction="#onEnter" />
+                    <Separator prefWidth="200.0" />
+                    <Button alignment="CENTER" mnemonicParsing="false" onAction="#login">
+                        <font>
+                            <Font size="20.0" />
+                        </font>
+                        <VBox.margin>
+                            <Insets top="10.0" />
+                        </VBox.margin>
+                        <graphic>
+                            <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@Style/login.png" />
+                                </image>
+                            </ImageView>
+                        </graphic>
+                    </Button>
+                    <Label fx:id="responseLabel">
+                  <VBox.margin>
+                     <Insets bottom="3.0" />
+                  </VBox.margin></Label>
+                </children>
+                <GridPane.margin>
+                    <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                </GridPane.margin>
+            </VBox>
+            <HBox prefHeight="21.0" prefWidth="351.0" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                <children>
+                    <Hyperlink fx:id="regLink" alignment="CENTER" contentDisplay="CENTER" onAction="#registerNew" style="-fx-background-color: rgba(0, 177, 255, 0.6); -fx-background-radius: 3px;" text="New User?" textAlignment="CENTER" textFill="#3300b0">
+                        <HBox.margin>
+                            <Insets left="120.0" />
+                        </HBox.margin>
+                        <font>
+                            <Font name="System Bold" size="12.0" />
+                        </font>
+                    </Hyperlink>
+                </children>
+                <opaqueInsets>
+                    <Insets />
+                </opaqueInsets>
+            </HBox>
+        </children>
+    </GridPane>
+</fx:root>
